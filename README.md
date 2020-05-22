@@ -13,6 +13,7 @@ pip3 install ktimeout
 
 ## Usage
 ~~~~python
+# CHECK 'demo.py' FOR ALL EXAMPLES
 from typing import Optional
 import time
 

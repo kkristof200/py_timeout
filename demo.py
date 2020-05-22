@@ -3,6 +3,26 @@ import time
 
 from ktimeout import timeout
 
+# TEST WITH CLASS
+class T:
+    def func(self):
+        return timeout.run(
+            timeout.partial(self.__func, 1, kw=3),
+            2
+        )
+
+    def __func(self, i: int, kw: int = 0):
+        print(kw)
+
+        return i
+
+try:
+    print('res', T().func())
+except Exception as e:
+    print(e)
+
+
+# TESTS WITH GLOBAL FUNCS
 def func_with_arguments(sleep_time: float, extra_print: Optional[str] = None):
     while True:
         time.sleep(sleep_time)
