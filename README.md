@@ -13,15 +13,30 @@ pip3 install ktimeout
 
 ## Usage
 ~~~~python
+from typing import Optional
 import time
 
 from ktimeout import timeout
 
-def random_func():
+def func_with_arguments(sleep_time: float, extra_print: Optional[str] = None):
     while True:
-        time.sleep(1)
+        time.sleep(sleep_time)
 
-        print('Sleeping 1 sec')
+        print('Sleeping', sleep_time, 'sec', extra_print or '')
 
-timeout.run(random_func, 3)
+def func():
+    func_with_arguments(0.5, extra_print='called from func()')
+
+try:
+    timeout.run(func, 2)
+except Exception as e:
+    print(e)
+
+try:
+    timeout.run(
+        timeout.partial(func_with_arguments, 0.25, extra_print='extra'),
+        2
+    )
+except Exception as e:
+    print(e)
 ~~~~
