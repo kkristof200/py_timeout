@@ -13,7 +13,7 @@ def run(func: Callable, timeout: int, timeout_handler: Callable = __default_time
     signal.signal(signal.SIGALRM, timeout_handler)
     signal.alarm(timeout)
 
-    func()
+    return func()
 
 def partial(func: Callable, *args, **kwargs):
     from functools import partial as _partial

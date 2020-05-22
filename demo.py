@@ -12,6 +12,11 @@ def func_with_arguments(sleep_time: float, extra_print: Optional[str] = None):
 def func():
     func_with_arguments(0.5, extra_print='called from func()')
 
+def func_with_return():
+    time.sleep(1)
+
+    return 'return_val'
+
 try:
     timeout.run(func, 2)
 except Exception as e:
@@ -22,5 +27,10 @@ try:
         timeout.partial(func_with_arguments, 0.25, extra_print='extra'),
         2
     )
+except Exception as e:
+    print(e)
+
+try:
+    print(timeout.run(func_with_return, 2))
 except Exception as e:
     print(e)
