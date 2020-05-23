@@ -38,4 +38,12 @@ try:
 except Exception as e:
     print(e)
 
-time.sleep(5)
+try:
+    with timeout.timeout(1):
+        while True:
+            sleep_time = 0.25
+            time.sleep(sleep_time)
+
+            print('Sleeping', sleep_time, 'sec')
+except Exception as e:
+    print(e)

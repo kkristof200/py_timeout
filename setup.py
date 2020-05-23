@@ -9,7 +9,7 @@ else:
 
 setuptools.setup(
     name="ktimeout",
-    version="0.0.6",
+    version="0.0.7",
     author="Kristof",
     description="add timeout to any function",
     long_description=long_description,
