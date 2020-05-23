@@ -40,4 +40,13 @@ try:
     )
 except Exception as e:
     print(e)
+
+try:
+    with timeout.timeout(1):
+        while True:
+            time.sleep(sleep_time)
+
+            print('Sleeping', sleep_time, 'sec', extra_print or '')
+except Exception as e:
+    print(e)
 ~~~~
